@@ -1,0 +1,22 @@
+{% extends 'learning_logs/base.html' %}
+{% load bootstrap3 %}
+{% load guardian_tags %}
+
+{% block header %}
+    <h2>权限申请</h2>
+{% endblock header %}
+
+{% block content %}
+    {% get_obj_perms request.user for entry as 'entry_perms' %}
+    {% if 'canchange_entry' in entry_perms %}
+        <p>您已拥有修改权限！</p>
+    {% else %}
+        <p>您尚未拥有修改权限！</p>
+        {% if p == 1 %}
+            <p>您已申请！</p>
+        {% else %}
+            <p>您尚未申请！</p>
+            <a href="{% url 'learning_logs:applying' entry.id %}">点此申请  </a>
+        {% endif %}
+    {% endif %}
+{% endblock content%}

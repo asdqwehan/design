@@ -1,0 +1,15 @@
+{% extends 'learning_logs/base.html' %}
+{% load bootstrap3 %}
+{% load guardian_tags %}
+
+{% block header %}
+    <h2>权限申请</h2>
+{% endblock header %}
+
+{% block content %}
+<form action="{% url 'learning_logs:applying' entry.id %}" method="POST">
+    {% csrf_token %}
+    你确定要向 {{ entry.owner }} 申请文章 《{{ entry.text|truncatewords:"30" }}》 的修改权限吗？
+    <input type="submit" name="applicant" />
+</form>
+{% endblock content %}

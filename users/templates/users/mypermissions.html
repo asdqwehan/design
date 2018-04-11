@@ -1,0 +1,20 @@
+{% extends 'learning_logs/base.html' %}
+{% load bootstrap3 %}
+{% load guardian_tags %}
+
+{% block header %}
+    <h3>权限许可</h3>
+{% endblock header %}
+
+{% block content %}
+<form action="{% url 'users:mypermissions' %}" method="POST">
+    {% csrf_token %}
+    {% for entry in entries %}
+        {{ entry.text|truncatewords:"30" }}
+        {% for each in entry.userperm_set.all %}
+            -------  {{ each.applicant }}<input type="checkbox" name="applicants" value="{{ each.applicant}}" />
+        {% endfor %}    
+    {% endfor%}
+    <input type="submit" value="确认"/>
+</form>
+{% endblock content %}
