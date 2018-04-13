@@ -1,7 +1,7 @@
 .navbar-vertical-left {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 3.5em;
   height: 100%;
   width: 160px;
   overflow: hidden;

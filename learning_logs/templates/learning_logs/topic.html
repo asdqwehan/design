@@ -1,49 +1,31 @@
 {% extends 'learning_logs/base.html' %}
 {% load bootstrap3 %}
 {% block header %}
-    <h2>{{ topic }}</h2>
+    <h2>Topic / {{ topic }}</h2>
 {% endblock header %}
 
 {% block content %}
-    <p>Topic: {{ topic }}</p>
-    <p>Entries:</p>
     <p>
-        <a href="{% url 'learning_logs:new_entry' topic.id %}">add new entry</a>
+        <a href="{% url 'learning_logs:new_entry' topic.id %}"></a>
     </p>
     <ul>
-    {% for entry in entries %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3>
-                {{ entry.date_added|date:'M d, Y H:i' }}
-                <small>
-                    <a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a>
-                    <a href="{% url 'learning_logs:userapply' entry.id %}">permission</a>
-                </small>
-            </h3>
-        </div>
-        <div class="panel-body">
-            {{ entry.text|linebreaks }}
+
+<article class="article">
+        {% for entry in entries %}
+    <div class="article-header">
+        <h2 class="header-title">
+            <a href="{% url 'learning_logs:entry' entry.id %}">{{ entry.entrytitle }}</a>
+        </h2>
+        <div class="header-dateline"><h4>{{ entry.date_added|date:"m/d Y"}}</h4></div>
+    </div>
+        <div class="article-summary">
+            {{ entry.text }}
         </div>
         
-        <ul class="list-group"></ul>
-        <li class="list-group-item">Comments 
-            <a href="{% url 'learning_logs:comment' entry.id %}">Add comment</a>
-        </li>
-            {% for comment in entry.comment_set.all %}
-            <ul>    
-                <li class="list-group-item">
-                    {{ comment.owner}} -- {{ comment.date_added|date:'M d, Y H:i' }}
-                {{ comment.text|linebreaks }}</li>
-            </ul>
-            {% empty %}
-            <p>There has no comments yet.</p>
-            {% endfor %}
-        
-        <div><!-- panel -->
     {% empty %}
         There are no entries for this topic yet.
     {% endfor %}
-    </div>
-    </ul>
+    
 {% endblock %}
+
+</article>

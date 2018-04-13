@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^new_entry/(?P<topic_id>\d+)/s$', views.new_entry, name='new_entry'),
     #用于编辑条目的页面
     url(r'^edit_entry/(?P<entry_id>\d+)/$', views.edit_entry, name='edit_entry'),
-
+    url(r'^entry/(?P<entry_id>\d+)/$', views.entry, name="entry"),
     #comments
     url(r'^comment/(?P<entry_id>\d+)/$', views.comment, name='comment'),
 

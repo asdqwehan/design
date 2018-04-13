@@ -14,6 +14,7 @@ class Topic(models.Model):
 class Entry(models.Model):
     """学到的有关某个主题的具体知识"""
     topic = models.ForeignKey(Topic)
+    entrytitle = models.CharField(max_length=200)
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User)

@@ -1,0 +1,11 @@
+{% extends 'learning_logs/base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<article class="article">
+    <div class="article-header">
+        <h1 class="header-title">{{ entry.entrytitle }}</h1>
+    </div>
+
+    <div class="article-body"><h3>{{ entry.text }}</h3></div>
+</article>
+{% endblock content %}

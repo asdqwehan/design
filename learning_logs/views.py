@@ -88,6 +88,13 @@ def edit_entry(request, entry_id):
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
 
+def entry(request, entry_id):
+    """"""
+    entry = Entry.objects.get(id=entry_id)
+
+    context = {'entry': entry}
+    return render(request, 'learning_logs/entry.html', context)
+
 def comment(request, entry_id):
     """Add new comments"""
     entry = Entry.objects.get(id=entry_id)

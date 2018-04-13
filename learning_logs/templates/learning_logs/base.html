@@ -3,97 +3,126 @@
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
+
+	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-	<title>基于Bootstrap的响应式滑动侧边栏布局模板|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<title>Learning Log</title>
 	<!-- FontAwesome -->
-	<link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	
+
+	 <link rel="stylesheet" href="https://zuofan.github.io/jekyll-blog-template//media/css/main.css"> 
+	 <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Twitter Bootstrap -->
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{% static "css/default.css" %}">
 	<link rel="stylesheet" href="{% static "css/bootstrap-vertical-menu.css" %}">
-
+	
 	<style>
-	ul.ul1{
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		width: 200px;
-		background-color: #f1f1f1;
+	.navbar{
+		border: none;
 	}
-
-	a.a1{
-		display: block;
-		color: rgb(26, 52, 82);
-		padding:8px 16px;
-		text-decoration: none;
-	}
-	a.a2{
-		display: block;
-		color: black;
-		padding: 0;
-		text-decoration:none;
-	}
-	a.a1:hover{
-		background-color: #555;
-		color: white;
-	}
+		
 	</style>
+
 </head>
+
 <body>
-	<nav class="navbar navbar-vertical-left">
-	    <ul class="nav navbar-nav">
-	      <li>
-	        <a href="{% url 'learning_logs:topics' %}">
-	          <i class="fa fa-fw fa-lg fa-home"></i> 
-	          <span>Topics</span>
-	        </a>
-	      </li>
-	      <li>
-	        <a href>
-	          <i class="fa fa-fw fa-lg fa-download "></i> 
-	          <span>Menu 2</span>
-	        </a>
-	      </li>
-	      <li>
-	        <a href>
-	          <i class="fa fa-fw fa-lg fa-comments-o"></i> 
-	          <span>Menu 3</span>
-	        </a>
-	      </li>
-	      <li>
-	        <a href>
-	          <i class="fa fa-fw fa-lg fa-desktop"></i> 
-	          <span>Menu 4</span>
-	        </a>
-	      </li>
-	      <li>
-	        <a href>
-	          <i class="fa fa-fw fa-lg fa-tablet"></i> 
-	          <span>Menu 5</span>
-	        </a>
-	      </li>
-	      <li>
-	        <a href>
-	          <i class="fa fa-fw fa-lg fa-laptop"></i> 
-	          <span>Menu 6</span>
-	        </a>
-	      </li>
-	    </ul>
-	</nav>
-	<div class="htmleaf-container">
-		<header class="htmleaf-header">
-			<h1>Learning log <span></span></h1>
-			
-		</header>
-		<div class="htmleaf-content bgcolor-1">
-					<div class="page-header">
+	<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+            </button>
+            <a class="navbar-brand" href="{% url 'learning_logs:index' %}">
+                Learning Log
+            </a>
+        </div>
+        
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'learning_logs:topics' %}">Topics</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a class="dropdown-toggle" data-toggle="dropdown">Hello, {{ user.username }}.<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'users:mypermissions' %}">My permissions</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="{% url 'users:logout' %}">Log out</a></li>
+                {% else %}
+                    <li><a href="{% url 'users:register' %}">register</a></li>
+                    <li><a href="{% url 'users:login' %}">log in</a></li>
+                {% endif %}
+            </ul>
+        </div><!--/.nav-collapse -->
+
+        <!-- display time now -->
+        <div class="navbar-collapse collapse" style="text-align: center;">
+                <ul class="nav navbar-nav" style="display: inline-block;float: none;">
+                   
+                    </li>
+                </ul>
+        </div>
+
+    </div>
+</nav>
+
+<nav class="navbar navbar-vertical-left">
+	<ul class="nav navbar-nav">
+		<li>
+			<a href="{% url 'learning_logs:topics' %}">
+				<i class="fa fa-fw fa-lg fa-home"></i> 
+				<span>Topics</span>
+			</a>
+		</li>
+		<li>
+			<a href>
+				<i class="fa fa-fw fa-lg fa-download "></i> 
+				<span>Menu 2</span>
+			</a>
+		</li>
+		<li>
+			<a href>
+				<i class="fa fa-fw fa-lg fa-comments-o"></i> 
+				<span>Menu 3</span>
+			</a>
+		</li>
+		<li>
+			<a href>
+				<i class="fa fa-fw fa-lg fa-desktop"></i> 
+				<span>Menu 4</span>
+			</a>
+		</li>
+		<li>
+			<a href>
+				<i class="fa fa-fw fa-lg fa-tablet"></i> 
+				<span>Menu 5</span>
+			</a>
+		</li>
+		<li>
+			<a href>
+				<i class="fa fa-fw fa-lg fa-laptop"></i> 
+				<span>Menu 6</span>
+			</a>
+		</li>
+	</ul>
+	
+</nav>
+
+<div class="row">
+	<div class="col-xs-12 col-md-offset-2 col-md-8">
+					<div>
 						{% block header %}{% endblock header %}
 					</div>
+
 					<div>
 						{% block content %}{% endblock content %}
 					</div>
-		</div>
+	</div>
+</div>
 		
 	
 </body>
