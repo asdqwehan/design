@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'learning_logs',
     'users',
     'guardian',
+    'ckeditor',
+    'ckeditor_uploader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,8 +107,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 #permissions
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend', #django默认backend
     'guardian.backends.ObjectPermissionBackend',
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
+CKEDITOR_UPLOAD_PATH = 'upload/'

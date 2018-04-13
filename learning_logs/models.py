@@ -1,6 +1,7 @@
 #coding=utf-8
 from django.db import models
 from django.contrib.auth.models import User, Permission
+from ckeditor.fields import RichTextField
 # Create your models here.
 class Topic(models.Model):
     """用户学习主题"""
@@ -15,7 +16,7 @@ class Entry(models.Model):
     """学到的有关某个主题的具体知识"""
     topic = models.ForeignKey(Topic)
     entrytitle = models.CharField(max_length=200)
-    text = models.TextField()
+    text = RichTextField()
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User)
 

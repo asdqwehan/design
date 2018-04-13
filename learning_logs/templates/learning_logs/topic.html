@@ -2,11 +2,13 @@
 {% load bootstrap3 %}
 {% block header %}
     <h2>Topic / {{ topic }}</h2>
+    
 {% endblock header %}
 
 {% block content %}
     <p>
-        <a href="{% url 'learning_logs:new_entry' topic.id %}"></a>
+        <a href="{% url 'learning_logs:new_entry' topic.id %}">new entry</a>
+        {{ topic.title }}
     </p>
     <ul>
 
