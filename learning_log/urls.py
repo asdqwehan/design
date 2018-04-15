@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^users/', include('users.urls', namespace='users')),
     url(r'', include('learning_logs.urls', namespace='learning_logs')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^search/', include('haystack.urls')),
 ]
