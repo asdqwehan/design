@@ -3,18 +3,14 @@
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
-
-	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 	<title>Learning Log</title>
 	<!-- FontAwesome -->
-	
 	 <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Twitter Bootstrap -->
-	<link rel="stylesheet" href="https://zuofan.github.io/jekyll-blog-template//media/css/main.css" }%"> 
+	<link rel="stylesheet" href="https://zuofan.github.io/jekyll-blog-template//media/css/main.css"> 
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	 
 	<link rel="stylesheet" href="{% static "css/bootstrap-vertical-menu.css" %}">
 	
 	<script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script>
@@ -56,7 +52,7 @@
 						
 						<button type="submit" class="btn btn-default">Search</button>
 					</form></li>
-                    <li><a class="dropdown-toggle" data-toggle="dropdown">Hello, {{ user.username }}.<b class="caret"></b></a>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Hello, {{ user.username }}.</a>
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'users:mypermissions' %}">My permissions</a></li>
                     </ul>
@@ -83,15 +79,15 @@
 <nav class="navbar navbar-vertical-left">
 	<ul class="nav navbar-nav">
 		<li>
-			<a href="{% url 'learning_logs:topics' %}">
+			<a href="{% url 'users:mypermissions' %}">
 				<i class="fa fa-fw fa-lg fa-home"></i> 
-				<span>Topics</span>
+				<span>Users</span>
 			</a>
 		</li>
 		<li>
 			<a href>
 				<i class="fa fa-fw fa-lg fa-download "></i> 
-				<span>Menu 2</span>
+				<span>Topics</span>
 			</a>
 		</li>
 		<li>
@@ -142,6 +138,6 @@
 	</div>
 </div>
 		
-	
+
 </body>
 </html>

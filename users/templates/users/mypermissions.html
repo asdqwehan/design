@@ -10,10 +10,12 @@
 <form action="{% url 'users:mypermissions' %}" method="POST">
     {% csrf_token %}
     {% for entry in entries %}
-        {{ entry.text|truncatewords:"30" }}
+        {{ entry.entrytitle }}<br/>
         {% for each in entry.userperm_set.all %}
-            -------  {{ each.applicant }}<input type="checkbox" name="applicants" value="{{ each.applicant}}" />
+            -------  {{ each.applicant }}<input type="checkbox" name="applicants" value="{{ each.applicant }}" />
         {% endfor %}    
+    {% empty %}
+    <p>No</p>
     {% endfor%}
     <input type="submit" value="确认"/>
 </form>
