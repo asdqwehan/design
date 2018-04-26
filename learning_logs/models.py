@@ -19,12 +19,16 @@ class Entry(models.Model):
     text = RichTextField()
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User)
+    views = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name_plural = 'entries'
         permissions = (
             ('canchange_entry', 'Can change the entries'),
         )
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
 
     def __str__(self):
         """返回模型的字符串表示"""

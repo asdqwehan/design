@@ -18,4 +18,19 @@
     summarizing what you've learned.
     </h2>
 {% endif %}
+<h3>Popular Topics</h3>
+{% for topic in topics %}
+    <h4><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic.text }}</a> (<small>{{ topic.entry_set.all.count}}</small>)</h4>
+{% endfor %}
+<h3>Popular Entries</h3>
+{% for e in entryviews %}
+    <h4><a href="{% url 'learning_logs:entry' e.id %}">{{ e.entrytitle }}</a> <small>views:{{ e.views }}</small></h4>
+{% endfor %}
+
+<div class="blame">
+		<h3>你可能感兴趣</h3>
+        <a href=#>推荐文章1</a>
+        <a href=#>推荐文章2</a>
+    </div>
+    
 {% endblock content %}

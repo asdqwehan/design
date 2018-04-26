@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="https://zuofan.github.io/jekyll-blog-template//media/css/main.css"> 
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{% static "css/bootstrap-vertical-menu.css" %}">
+	<link rel="stylesheet" href="{% static "css/default.css" %}">
 	
 	<script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script>
 	<style>
@@ -22,6 +23,7 @@
 	.form1{
 		padding: 5em 10em;
 	}
+	
 	
 	</style>
 
@@ -42,7 +44,7 @@
         
         <div>
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'learning_logs:topics' %}">Topics</a></li>
+                <li><a href="{% url 'learning_logs:topics' %}"></a></li>
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
@@ -80,13 +82,13 @@
 	<ul class="nav navbar-nav">
 		<li>
 			<a href="{% url 'users:mypermissions' %}">
-				<i class="fa fa-fw fa-lg fa-home"></i> 
+				<i class="fa fa-fw fa-lg fa-user"></i> 
 				<span>Users</span>
 			</a>
 		</li>
 		<li>
-			<a href>
-				<i class="fa fa-fw fa-lg fa-download "></i> 
+			<a href="{% url 'learning_logs:topics' %}">
+				<i class="fa fa-fw fa-lg fa-book "></i> 
 				<span>Topics</span>
 			</a>
 		</li>
@@ -98,19 +100,19 @@
 		</li>
 		<li>
 			<a href>
-				<i class="fa fa-fw fa-lg fa-desktop"></i> 
+				<i class="fa fa-fw fa-lg fa-at "></i> 
 				<span>Menu 4</span>
 			</a>
 		</li>
 		<li>
 			<a href>
-				<i class="fa fa-fw fa-lg fa-tablet"></i> 
+				<i class="fa fa-fw fa-lg fa-at"></i> 
 				<span>Menu 5</span>
 			</a>
 		</li>
 		<li>
 			<a href>
-				<i class="fa fa-fw fa-lg fa-laptop"></i> 
+				<i class="fa fa-fw fa-lg fa-at"></i> 
 				<span>Menu 6</span>
 			</a>
 		</li>
@@ -123,7 +125,17 @@
 		-->
 
 		
+		<div class="related">
+			<h3>特别推荐</h3>
+			<a href="http://www.htmleaf.com/jQuery/Layout-Interface/201507102200.html">
+				<h3>推荐的文章 1</h3>
+			</a>
+			<a href="http://www.htmleaf.com/jQuery/Menu-Navigation/201507082190.html">
+				<h3>推荐的文章 2</h3>
+			</a>
+		</div>
 
+		
 
 <div class="row">
 	<div class="col-xs-12 col-md-offset-2 col-md-8">
@@ -137,7 +149,10 @@
 					</div>
 	</div>
 </div>
-		
+
+
+
+
 
 </body>
 </html>

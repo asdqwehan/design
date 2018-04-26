@@ -10,7 +10,13 @@ from guardian.decorators import permission_required
 # Create your views here.
 def index(request):
     """学习笔记的主页"""
-    return render(request, 'learning_logs/index.html')
+    topics = Topic.objects.all().order_by('-date_added')[:5]
+
+    entry = Entry.objects.all()
+    entryviews = entry.order_by("-views")[:5]
+    entrydate = entry.order_by("-date_added")[:5]
+    context = {'entry': entry, 'entryviews': entryviews, 'entrydate': entrydate, 'topics': topics}
+    return render(request, 'learning_logs/index.html', context)
 
 @login_required
 def topics(request):
@@ -91,6 +97,7 @@ def edit_entry(request, entry_id):
 def entry(request, entry_id):
     """"""
     entry = Entry.objects.get(id=entry_id)
+    entry.increase_views()
 
     context = {'entry': entry}
     return render(request, 'learning_logs/entry.html', context)

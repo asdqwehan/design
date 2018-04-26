@@ -19,7 +19,7 @@
         {% if query %}
             
             <h3>Results</h3>
-            <P>query {{ query }}</P>
+            <!-- <P>query {{ query }}</P> -->
             {% for result in page.object_list %}
                 <p>
                     <a href="{{ result.object.get_absolute_url }}">{{ result.object.entrytitle }}</a>
@@ -39,11 +39,11 @@
         {% else %}
             {# Show some example queries to run, maybe query syntax, something else? #}
         {% endif %}
-            
+       <!--     
         {% if request.GET %}
                 <p>{{ request.GET.q }}</p>
         {% endif %}
-        
+       -->
     
 {% endblock %}
 

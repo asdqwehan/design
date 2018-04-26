@@ -13,6 +13,7 @@
         <li>
         <h3>
             <a class="a1" href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+            <small>( {{ topic.entry_set.all.count }} )</small>
         </h3>
         </li>
     {% empty %}
