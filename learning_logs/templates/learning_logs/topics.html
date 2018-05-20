@@ -15,11 +15,22 @@
             <a class="a1" href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
             <small>( {{ topic.entry_set.all.count }} )</small>
         </h3>
+        ------by {{topic.owner}}
         </li>
     {% empty %}
         <li>No topics have been added yet.</li>
     {% endfor %}
     </ul>
+    
+    
 
+    <div class="related">
+        <h3>推荐</h3>
+        {% for each in topics_random %}
+        <a href="{% url 'learning_logs:topic' each.id %}">
+            <h3>{{each.text}}</h3>
+        </a>---by {{each.owner}}
+        {% endfor %}
+    </div>
     
 {% endblock %}

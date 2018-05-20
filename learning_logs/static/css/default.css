@@ -27,8 +27,18 @@
 
 }
 */
+.related {
+	color: #333;
+	background: #fff;
+	text-align: center;
+	font-size: 1.25em;
+	
+	width: 100%; 
+	overflow: hidden;
+	bottom: 0px;
+}
 
-
+/*
 .related {
 	
 	
@@ -42,7 +52,7 @@
 	overflow: hidden;
 	
 }
-
+*/
 
 /*
 .related {

@@ -8,6 +8,24 @@
 {% block content %}
 {% if user.is_authenticated %}
     <h2><a href="{% url 'learning_logs:topics' %}">Chick This</a>  to look over your topics.</h2>
+    <h3>Popular Topics</h3>
+{% for topic in topics %}
+    <h4><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic.text }}</a> (<small>{{ topic.entry_set.all.count}}</small>)</h4>
+{% endfor %}
+<h3>Popular Entries</h3>
+{% for e in entryviews %}
+    <h4><a href="{% url 'learning_logs:entry' e.id %}">{{ e.entrytitle }}</a> <small>( views:{{ e.views }} )</small></h4>
+{% endfor %}
+<div class="related">
+	<h3>特别推荐</h3>
+	<a href="http://www.htmleaf.com/jQuery/Layout-Interface/201507102200.html">
+		<h3>推荐的文章 1</h3>
+	</a>
+	<a href="http://www.htmleaf.com/jQuery/Menu-Navigation/201507082190.html">
+		<h3>推荐的文章 2</h3>
+	</a>
+</div>
+
 {% else %}
     <h2>
     <a href="{% url 'users:register' %}">Register an accoutn</a> to make
@@ -18,19 +36,7 @@
     summarizing what you've learned.
     </h2>
 {% endif %}
-<h3>Popular Topics</h3>
-{% for topic in topics %}
-    <h4><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic.text }}</a> (<small>{{ topic.entry_set.all.count}}</small>)</h4>
-{% endfor %}
-<h3>Popular Entries</h3>
-{% for e in entryviews %}
-    <h4><a href="{% url 'learning_logs:entry' e.id %}">{{ e.entrytitle }}</a> <small>views:{{ e.views }}</small></h4>
-{% endfor %}
 
-<div class="blame">
-		<h3>你可能感兴趣</h3>
-        <a href=#>推荐文章1</a>
-        <a href=#>推荐文章2</a>
-    </div>
+
     
 {% endblock content %}

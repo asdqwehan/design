@@ -18,7 +18,11 @@
         <h2 class="header-title">
             <a href="{% url 'learning_logs:entry' entry.id %}">{{ entry.entrytitle }}</a>
         </h2>
-        <div class="header-dateline"><h4>{{ entry.date_added|date:"m/d Y"}}</h4></div>
+        <small>< author: {{ entry.owner }} ></small>
+        <div class="header-dateline"><h4>{{ entry.date_added|date:"m/d Y"}}
+            <small>( {{ entry.comment_set.all.count }} comments )</small>
+        </h4>
+        </div>
     </div>
         <div class="article-summary">
             {{ entry.text }}

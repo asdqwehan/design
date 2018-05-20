@@ -22,7 +22,8 @@ def index(request):
 def topics(request):
     """显示所有的主题"""
     topics = Topic.objects.all().order_by('date_added')
-    context = {'topics': topics}
+    topics_random = Topic.objects.all().order_by('?')[:2]
+    context = {'topics': topics, 'topics_random': topics_random}
     return render(request, 'learning_logs/topics.html', context)
 
 @login_required
@@ -98,8 +99,8 @@ def entry(request, entry_id):
     """"""
     entry = Entry.objects.get(id=entry_id)
     entry.increase_views()
-
-    context = {'entry': entry}
+    comments = Comment.objects.filter(entry=entry)
+    context = {'entry': entry, 'comments': comments}
     return render(request, 'learning_logs/entry.html', context)
 
 def comment(request, entry_id):
@@ -115,7 +116,7 @@ def comment(request, entry_id):
             add_comment.entry = entry
             add_comment.owner = request.user
             add_comment.save()
-            return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic.id]))
+            return HttpResponseRedirect(reverse('learning_logs:entry', args=[entry.id]))
 
     context = {'entry': entry, 'topic': topic, 'commentform': commentform}
     return render(request, 'learning_logs/comment.html', context)
@@ -124,11 +125,11 @@ def userapply(request, entry_id):
     """"""
     entry = Entry.objects.get(id=entry_id)
     userperm = UserPerm.objects.filter(entry=entry)
-    p = 0
+    applykey = 0
     for each in userperm:
         if request.user == each.applicant:
-            p = 1
-    context = {'entry': entry, 'userperm': userperm, 'p': p}
+            applykey = 1
+    context = {'entry': entry, 'userperm': userperm, 'applykey': applykey}
     return render(request, 'learning_logs/userapply.html', context)
 
 def applying(request, entry_id):

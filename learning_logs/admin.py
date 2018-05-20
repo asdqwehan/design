@@ -3,6 +3,8 @@ from learning_logs.models import Topic, Entry, Comment
 # Register your models here.
 class TopicAdmin(admin.ModelAdmin):
     list_display = ('text', 'owner')
+    search_fields = ['text', ]
+    list_filter = ['date_added', ]
 
 class EntryAdmin(admin.ModelAdmin):
     list_display = ('topic', 'entrytitle', 'text', 'owner')

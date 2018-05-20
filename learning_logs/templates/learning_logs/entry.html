@@ -8,5 +8,10 @@
     </div>
 
     <div class="article-body"><h3>{{ entry.text }}</h3></div>
+    <h4 class="h4fonts">Comments</h4>
+    {% for comment in comments %}
+    <p  class="comment_p1 h4fonts">{{ comment.owner }} - <small>{{ comment.date_added }}</small></p>
+    <p class="comment_p2">{{ comment.text }}</p>
+    {% endfor %}
 </article>
 {% endblock content %}

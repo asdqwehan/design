@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import logout,login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from guardian.shortcuts import assign, remove_perm
-from learning_logs.models import Entry
+from learning_logs.models import Topic, Entry
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -54,3 +54,10 @@ def mypermissions(request):
     
     context = {'myentry': myentry, 'entries': entries, 'userperm': userperm}
     return render(request, 'users/mypermissions.html', context)
+
+def userspace(request):
+    mytopics = Topic.objects.filter(owner=request.user)
+    myentries = Entry.objects.filter(owner=request.user)
+
+    context = {'mytopics': mytopics, 'myentries':myentries }
+    return render(request, 'users/userspace.html', context)

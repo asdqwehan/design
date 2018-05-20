@@ -14,4 +14,6 @@ urlpatterns = [
 
     #permission
     url(r'^mypermissions/$', views.mypermissions, name='mypermissions'),
+    #usersapace
+    url(r'^userspace/$', views.userspace, name='userspace'),
 ]

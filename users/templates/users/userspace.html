@@ -1,0 +1,28 @@
+{% extends 'learning_logs/base.html' %}
+{% load bootstrap3 %}
+
+{% block header%}
+<h3>个人空间</h3>
+<style>
+    .pose{
+        height: 10%;
+        padding: 1em;
+    }
+</style>
+{% endblock header%}
+
+{% block content %}
+
+<ul class='pose'><h4>Username: <small>{{ request.user }}</small></h4></ul>
+<ul class='pose'><h4>Last login: <small>{{ request.user.last_login }}</small></h4></ul>
+<ul class='pose'><h4>Join date: <small>{{ request.user.date_joined }}</small></h4></ul>
+<ul class='pose'><h4>Mytopics:</h4></ul>
+<div class='article'>
+{% for mytopic in mytopics %}
+<ul>
+<h4>{{ mytopic.text }}</h4>
+</ul>
+{% endfor %}
+</div>
+
+{% endblock content %}

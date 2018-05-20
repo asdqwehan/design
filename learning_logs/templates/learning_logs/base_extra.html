@@ -23,17 +23,8 @@
 	.form1{
 		padding: 5em 10em;
 	}
-	.h4fonts {
-		font-family:Helvetica;
-		padding: 20% 0 0.5em 0;
-	}
-
-	.comment_p1 {
-	padding: 0.5em 0 0.2em 0;
-}
-	.comment_p2 {
-		padding: 0.2em 0 0.2em 1em;
-	}
+	
+	
 	</style>
 
 </head>
@@ -52,6 +43,10 @@
         </div>
         
         <div>
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'learning_logs:topics' %}"></a></li>
+            </ul>
+            
             <ul class="nav navbar-nav navbar-right">
 				{% if user.is_authenticated %}
 					<li><form class="navbar-form navbar-left" role="search" action="/search/" name="searchform" method="POST">
@@ -130,7 +125,16 @@
 		-->
 
 		
-		
+		<div class="related">
+			<h3>特别推荐</h3>
+			<a href="http://www.htmleaf.com/jQuery/Layout-Interface/201507102200.html">
+				<h3>推荐的文章 1</h3>
+			</a>
+			<a href="http://www.htmleaf.com/jQuery/Menu-Navigation/201507082190.html">
+				<h3>推荐的文章 2</h3>
+			</a>
+		</div>
+
 		
 
 <div class="row">
@@ -145,7 +149,6 @@
 					</div>
 	</div>
 </div>
-
 
 
 
