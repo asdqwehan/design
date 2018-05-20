@@ -133,3 +133,23 @@ HAYSTACK_CONNECTIONS = {
 
 ##设置项是否开启URL访问地址后面不为/跳转至带有/的路径
 APPEND_SLASH = True
+
+#heroku
+if os.getcwd() == '/app':
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(default='postgres://localhost')
+    }
+
+    #让request.is_secure()承认X-Forwarded-Proto头
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    #支持所有的主机头(host header)
+    ALLOWED_HOSTS = ['*']
+
+    #静态资源配置
+    BASE_DOR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
