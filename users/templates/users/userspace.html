@@ -21,6 +21,8 @@
 {% for mytopic in mytopics %}
 <ul>
 <h4>{{ mytopic.text }}</h4>
+{% empty %}
+<h4>You have not create topics.</h4>
 </ul>
 {% endfor %}
 </div>

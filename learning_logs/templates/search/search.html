@@ -22,7 +22,8 @@
             <!-- <P>query {{ query }}</P> -->
             {% for result in page.object_list %}
                 <p>
-                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.entrytitle }}</a>
+                    <!-- <a href="{{ result.object.get_absolute_url }}">{{ result.object.entrytitle }}</a> -->
+                    <a href="{% url 'learning_logs:entry' result.object.id %}">{{ result.object.entrytitle }}</a>
                     {{ query }}
                 </p>
             {% empty %}
